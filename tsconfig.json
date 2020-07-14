@@ -1,0 +1,20 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"target": "es2015",
+		"declaration": true,
+		"sourceMap": true,
+		"strict": true,
+		"noImplicitAny": true,
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"outDir": "lib",
+		"allowSyntheticDefaultImports": true
+	},
+	"include": [
+		"src/**/*.ts"
+	],
+	"exclude": [
+		"node_modules"
+	]
+}
