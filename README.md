@@ -1,5 +1,5 @@
-# typed_css
-[![Build Status](https://travis-ci.org/elarivie/typed_css.svg?branch=master)](https://travis-ci.org/elarivie/typed_css) [![npm version](https://badge.fury.io/js/typed_css.svg)](http://badge.fury.io/js/typed_css)
+# css-ts
+[![Build Status](https://travis-ci.org/elarivie/css-ts.svg?branch=master)](https://travis-ci.org/elarivie/css-ts) [![npm version](https://badge.fury.io/js/css-ts.svg)](http://badge.fury.io/js/css-ts)
 
 **Generates TypeScript files (&#x2A;.ts) from (&#x2A;.css) files.**
 
@@ -16,7 +16,7 @@ For example given the following css,
 }
 ```
 
-typed_css creates the following styles.css.ts file from the above css:
+css-ts creates the following styles.css.ts file from the above css:
 
 ```ts
 /* styles.css.ts */
@@ -44,16 +44,16 @@ Doing so allows:
 ## Install instruction
 
 ```sh
-npm install typed_css
+npm install css-ts
 ```
 
 ## CLI
 
-Use `typed_css --help` for full list of options
+Use `css-ts --help` for full list of options
 
 # Basic usage
 
-Exec `typed_css <search path> [options]` command.
+Exec `css-ts <search path> [options]` command.
 
 1. If search path points to a file, the file will be processed
 2. If search path points to a folder, files to process will be looked for using glob pattern (see `--pattern`).
@@ -61,7 +61,7 @@ Exec `typed_css <search path> [options]` command.
 For example, if you have .css files under `src` directory, exec the following:
 
 ```sh
-typed_css src
+css-ts src
 ```
 
 Then, this creates `*.css.ts` files under the directory which contains original .css files.
@@ -81,7 +81,7 @@ If you want to customize glob pattern, you can use `--pattern` option.
 Note the quotes around the glob to `--pattern` (they are required, so that your shell does not perform the expansion).
 
 ```sh
-typed_css . --pattern 'src/**/*.css'
+css-ts . --pattern 'src/**/*.css'
 ```
 
 #### dry-run
