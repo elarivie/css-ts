@@ -6,14 +6,16 @@
 	"types": "lib/index.d.ts",
 	"scripts": {
 		"maintenance": "npm i --package-lock-only && npm audit fix && ./node_modules/.bin/npm-check-updates -u",
-		"mostlyclean": "rimraf lib/ test/fixture/*.ts .coverage package-lock.json",
-		"clean": "npm run mostlyclean; rimraf node_modules && package-lock.json yarn.lock",
+		"mostlyclean": "rimraf lib/ test/fixture/*.ts coverage package-lock.json yarn.lock",
+		"clean": "npm run mostlyclean && rimraf node_modules",
 		"build": "npm run mostlyclean && tsc && chmod +x lib/cli.js",
-		"test": "jest",
-		"test:watch": "jest --watch",
-		"test:ci": "jest --coverage",
-		"lint": "./node_modules/.bin/eslint . --ext 'ts,tsx' --report-unused-disable-directives || true",
-		"prepublish": "npm run build"
+		"test": "npm run build && jest",
+		"test:watch": "npm run build && jest --watch",
+		"test:coverage": "npm run build && jest --coverage",
+		"lint": "npm run mostlyclean && ./node_modules/.bin/eslint . --ext 'ts,tsx' --report-unused-disable-directives",
+		"prepublish": "",
+		"prepare": "",
+		"prepublishOnly": "npm run lint && npm run test && npm run build"
 	},
 	"bin": {
 		"css-ts": "lib/cli.js"
@@ -56,10 +58,14 @@
 		"npm-check-updates": "^7.0.1"
 	},
 	"jest": {
-		"collectCoverage": true,
+		"collectCoverage": false,
 		"coverageReporters": [
+			"clover",
+			"cobertura",
+			"html",
 			"json",
-			"html"
+			"lcov",
+			"text"
 		],
 		"transform": {
 			"^.+\\.ts$": "ts-jest"
